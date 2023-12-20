@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import generatePDF from "./Component/PDFGenerator/PDFGenerator";
+import "./App.css";
 
 function App() {
+  const handleGeneratePDF = () => {
+    generatePDF();
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Pdf Generator</h1>
+      <p>lorem</p>
+      <p>Sample webpage to genarate a pdf</p>
+      <button onClick={handleGeneratePDF}>Generate PDF</button>
     </div>
   );
 }
