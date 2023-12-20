@@ -127,6 +127,41 @@ function App() {
               <td>55.00%</td>
               <td>16.67%</td>
             </tr>
+            <tr>
+              <td id="total">Total%</td>
+              <td id="percent">100%</td>
+              <td id="some">28.33%</td>
+              <td>55.00%</td>
+              <td>16.67%</td>
+            </tr>
+            <tr>
+              <td id="total">Total%</td>
+              <td id="percent">100%</td>
+              <td id="some">28.33%</td>
+              <td>55.00%</td>
+              <td>16.67%</td>
+            </tr>
+            <tr>
+              <td id="total">Total%</td>
+              <td id="percent">100%</td>
+              <td id="some">28.33%</td>
+              <td>55.00%</td>
+              <td>16.67%</td>
+            </tr>
+            <tr>
+              <td id="total">Total%</td>
+              <td id="percent">100%</td>
+              <td id="some">28.33%</td>
+              <td>55.00%</td>
+              <td>16.67%</td>
+            </tr>
+            <tr>
+              <td id="total">Total%</td>
+              <td id="percent">100%</td>
+              <td id="some">28.33%</td>
+              <td>55.00%</td>
+              <td>16.67%</td>
+            </tr>
           </tfoot>
         </table>
       </div>
@@ -166,7 +201,7 @@ function App() {
         <hr class="horizontal-line" />
         <div class="line-text">Performance Ratings</div>
       </div>
-      <div className="body3">
+      <div className="body3 page-break">
         <table className="table3">
           <tbody>
             <tr>

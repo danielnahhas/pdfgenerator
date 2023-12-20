@@ -261,5 +261,7 @@
 .button:hover .button_lg::after {
   background-color: #fff;
 }
-
+.page-break {
+  page-break-before: always;
+}
 
