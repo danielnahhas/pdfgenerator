@@ -36,6 +36,62 @@ function App() {
       console.error("Error fetching data:", error);
     }
   };
+  const [riskData, setRiskData] = useState([]);
+
+  useEffect(() => {
+    fetchRiskData();
+  }, []);
+
+  const fetchRiskData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/risk");
+      if (response.status === 200) {
+        if (Array.isArray(response.data)) {
+          setRiskData(response.data);
+        } else if (
+          response.data &&
+          response.data.risk &&
+          Array.isArray(response.data.risk)
+        ) {
+          setRiskData(response.data.risk);
+        } else {
+          console.error("Failed to fetch data or incorrect data format");
+        }
+      } else {
+        console.error("Failed to fetch data - Invalid response status");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const [performanceData, setPerformanceData] = useState([]);
+
+  useEffect(() => {
+    fetchPerformanceData();
+  }, []);
+
+  const fetchPerformanceData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/performance");
+      if (response.status === 200) {
+        if (Array.isArray(response.data)) {
+          setPerformanceData(response.data);
+        } else if (
+          response.data &&
+          response.data.performance &&
+          Array.isArray(response.data.performance)
+        ) {
+          setPerformanceData(response.data.performance);
+        } else {
+          console.error("Failed to fetch data or incorrect data format");
+        }
+      } else {
+        console.error("Failed to fetch data - Invalid response status");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   const dragAreaRef = useRef(null);
   useEffect(() => {
     if (dragAreaRef.current) {
@@ -110,20 +166,20 @@ function App() {
                   <th className="risk">Risk Range</th>
                   <th className="impact">Weight</th>
                 </tr>
-                <tr>
-                  <td>Low</td>
-                  <td>1</td>
-                </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Moderate</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>Critical</td>
-                  <td>3</td>
-                </tr>
+                {riskData.length > 0 ? (
+                  riskData.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.riskrange}</td>
+                      <td>{item.weight}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="2">Loading...</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -137,6 +193,29 @@ function App() {
         <div className="body3 page-break box" draggable="true">
           <table className="table3">
             <tbody>
+              {performanceData.length > 0 ? (
+                performanceData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.title}</td>
+                    <td>
+                      <i className="fa-solid fa-arrow-right-long fa-2xl"></i>
+                    </td>
+                    <td>{item.num}%</td>
+                    <td>
+                      <i
+                        className="fa-solid fa-flag fa-2xl"
+                        style={{ color: "#ff0000" }}
+                      ></i>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="2">Loading...</td>
+                </tr>
+              )}
+            </tbody>
+            {/* <tbody>
               <tr>
                 <td>Unsatisfactory</td>
                 <td>
@@ -208,7 +287,7 @@ function App() {
                 </td>
                 <td>High</td>
               </tr>
-            </tbody>
+            </tbody> */}
           </table>
         </div>
         <div className="body4">
