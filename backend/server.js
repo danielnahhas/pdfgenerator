@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 
 const db = require("./models");
-const { Store, Risk, Performance } = require("./models");
+const { Store, Risk, Performance, bar_chart } = require("./models");
 
 app.use(
   cors({
@@ -60,6 +60,22 @@ app.get("/performance", async (req, res) => {
 
     console.log("Performance:", performance);
     return res.status(200).json({ performance });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+app.get("/Bar_Chart", async (req, res) => {
+  try {
+    const Bar_Chart = await bar_chart.findAll();
+    console.log("Fetched bar_chart:", Bar_Chart);
+
+    if (!Bar_Chart) {
+      return res.status(404).json({ error: "bar_chart not found" });
+    }
+
+    console.log("bar_chart:", Bar_Chart);
+    return res.status(200).json({ Bar_Chart });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal Server Error" });

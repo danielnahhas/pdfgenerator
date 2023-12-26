@@ -3,6 +3,9 @@ import "./App.css";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Sortable from "sortablejs";
+import Rech from "./Component/Rech/Rech.jsx";
+
+import Bars from "./Component/Bar/Bars.jsx";
 
 function App() {
   const handleGeneratePDF = () => {
@@ -290,14 +293,20 @@ function App() {
             </tbody> */}
           </table>
         </div>
-        <div className="body4">
-          <button className="button" onClick={handleGeneratePDF}>
-            <span className="button_lg">
-              <span className="button_sl"></span>
-              <span className="button_text">Download Now</span>
-            </span>
-          </button>
-        </div>
+      </div>
+      <div className="body">
+        <Bars />
+      </div>
+      <div className="body">
+        <Rech />
+      </div>
+      <div className="body4">
+        <button className="button" onClick={handleGeneratePDF}>
+          <span className="button_lg">
+            <span className="button_sl"></span>
+            <span className="button_text">Download Now</span>
+          </span>
+        </button>
       </div>
     </div>
   );
