@@ -294,7 +294,7 @@ function App() {
           </table>
         </div>
       </div>
-      <div className="body">
+      <div className="body page-break">
         <Bars />
       </div>
       <div className="body">
